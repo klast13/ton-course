@@ -1,0 +1,73 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "add_task",
+			"inputs": [
+				{"name":"_name","type":"string"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "show_opened_tasks",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "show_list_of_tasks",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"string"},{"name":"timestamp","type":"uint32"},{"name":"is_done","type":"bool"}],"name":"value0","type":"tuple[]"}
+			]
+		},
+		{
+			"name": "show_discribtion_by_key",
+			"inputs": [
+				{"name":"index","type":"uint256"}
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"string"},{"name":"timestamp","type":"uint32"},{"name":"is_done","type":"bool"}],"name":"value0","type":"tuple"}
+			]
+		},
+		{
+			"name": "delete_task",
+			"inputs": [
+				{"name":"index","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "mark_as_done",
+			"inputs": [
+				{"name":"index","type":"uint256"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"components":[{"name":"name","type":"string"},{"name":"timestamp","type":"uint32"},{"name":"is_done","type":"bool"}],"name":"tasks","type":"tuple[]"}
+	]
+}

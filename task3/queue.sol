@@ -1,9 +1,8 @@
 pragma ton-solidity >= 0.35.0;
 pragma AbiHeader expire;
 
-contract Accumulator {
+contract queue {
 
-	// State variable storing the sum of arguments that were passed to function 'add',
     string [] public names;
 
 	constructor() public {
