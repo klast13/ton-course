@@ -31,22 +31,22 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"components":[{"name":"name","type":"string"},{"name":"timestamp","type":"uint32"},{"name":"is_done","type":"bool"}],"name":"value0","type":"tuple[]"}
+				{"components":[{"name":"name","type":"string"},{"name":"is_done","type":"bool"},{"name":"is_deleted","type":"bool"}],"name":"value0","type":"tuple[]"}
 			]
 		},
 		{
 			"name": "show_discribtion_by_key",
 			"inputs": [
-				{"name":"index","type":"uint256"}
+				{"name":"_name","type":"string"}
 			],
 			"outputs": [
-				{"components":[{"name":"name","type":"string"},{"name":"timestamp","type":"uint32"},{"name":"is_done","type":"bool"}],"name":"value0","type":"tuple"}
+				{"components":[{"name":"name","type":"string"},{"name":"is_done","type":"bool"},{"name":"is_deleted","type":"bool"}],"name":"value0","type":"tuple"}
 			]
 		},
 		{
 			"name": "delete_task",
 			"inputs": [
-				{"name":"index","type":"uint256"}
+				{"name":"_name","type":"string"}
 			],
 			"outputs": [
 			]
@@ -54,7 +54,7 @@
 		{
 			"name": "mark_as_done",
 			"inputs": [
-				{"name":"index","type":"uint256"}
+				{"name":"_name","type":"string"}
 			],
 			"outputs": [
 			]
@@ -68,6 +68,6 @@
 		{"name":"_pubkey","type":"uint256"},
 		{"name":"_timestamp","type":"uint64"},
 		{"name":"_constructorFlag","type":"bool"},
-		{"components":[{"name":"name","type":"string"},{"name":"timestamp","type":"uint32"},{"name":"is_done","type":"bool"}],"name":"tasks","type":"tuple[]"}
+		{"components":[{"name":"name","type":"string"},{"name":"is_done","type":"bool"},{"name":"is_deleted","type":"bool"}],"name":"tasks","type":"map(uint256,tuple)"}
 	]
 }
