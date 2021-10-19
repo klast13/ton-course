@@ -32,7 +32,7 @@ contract task_list {
         tasks.add(now, newTask);        
 	}
     // показать кол-во невыполненых задач
-    function show_opened_tasks() public checkOwnerAndAccept returns (uint) {
+    function show_opened_tasks() public checkOwnerAndAccept view returns (uint) {
         uint count_of_opened_tasks = 0;
         optional(uint, tasksStruct) currentOpt = tasks.min();
         
@@ -41,23 +41,26 @@ contract task_list {
             if (!val.is_done && !val.is_deleted) {
                 count_of_opened_tasks += 1; 
             }
+            currentOpt = tasks.next(key);
         }
         return count_of_opened_tasks; 
 	}
     // показать список задач
-    function show_list_of_tasks() public checkOwnerAndAccept returns(tasksStruct[]) { 
+    function show_list_of_tasks() public checkOwnerAndAccept view returns(tasksStruct[]) { 
         tasksStruct[] resArr;       
         optional(uint, tasksStruct) currentOpt = tasks.min();
         
         while (currentOpt.hasValue()) {
             (uint key, tasksStruct val) = currentOpt.get();
-            resArr.push(val);
+            if (!val.is_deleted) {
+                resArr.push(val);
+            }
             currentOpt = tasks.next(key);
         }
         return resArr; 
     }
     // показать описание по ключу
-	    function show_discribtion_by_key(string _name) public checkOwnerAndAccept returns(tasksStruct) {
+	    function show_discribtion_by_key(string _name) public checkOwnerAndAccept view returns(tasksStruct) {
         optional(uint, tasksStruct) currentOpt = tasks.min();
         
         while (currentOpt.hasValue()) {
@@ -69,25 +72,27 @@ contract task_list {
         }
     }
     // удалить задачу
-    function delete_task(string _name) public view checkOwnerAndAccept {
+    function delete_task(string _name) public checkOwnerAndAccept {
         optional(uint, tasksStruct) currentOpt = tasks.min();
         
         while (currentOpt.hasValue()) {
             (uint key, tasksStruct val) = currentOpt.get();
             if (val.name == _name) {
                 val.is_deleted = true;
+                tasks.getReplace(key, val);
             }
             currentOpt = tasks.next(key);
         }
     }   
     // пометить как выполненную
-    function mark_as_done(string _name) public view checkOwnerAndAccept {
+    function mark_as_done(string _name) public checkOwnerAndAccept {
         optional(uint, tasksStruct) currentOpt = tasks.min();
         
         while (currentOpt.hasValue()) {
             (uint key, tasksStruct val) = currentOpt.get();
             if (val.name == _name) {
                 val.is_done = true;
+                tasks.getReplace(key, val);
             }
             currentOpt = tasks.next(key);
 	    }
