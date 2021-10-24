@@ -1,0 +1,56 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "createToken",
+			"inputs": [
+				{"name":"adress","type":"string"},
+				{"name":"hasElevator","type":"bool"},
+				{"name":"area","type":"uint256"},
+				{"name":"floor","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sellToken",
+			"inputs": [
+				{"name":"adr","type":"string"},
+				{"name":"price","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTokenInfo",
+			"inputs": [
+				{"name":"adress","type":"string"}
+			],
+			"outputs": [
+				{"name":"elev","type":"bool"},
+				{"name":"area","type":"uint256"},
+				{"name":"floor","type":"uint256"},
+				{"name":"price","type":"uint256"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"adrToInfo","type":"optional(cell)"}
+	]
+}
