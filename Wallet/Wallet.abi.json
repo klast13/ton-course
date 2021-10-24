@@ -1,0 +1,52 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sendTransactionWithoutCommision",
+			"inputs": [
+				{"name":"Adress_for_sending","type":"address"},
+				{"name":"value","type":"uint128"},
+				{"name":"Send_only_if_adress_exists","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sendTransactionWithCommision",
+			"inputs": [
+				{"name":"Adress_for_sending","type":"address"},
+				{"name":"value","type":"uint128"},
+				{"name":"Send_only_if_adress_exists","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sendAllMoneyAndDestroyWallet",
+			"inputs": [
+				{"name":"Adress_for_sending","type":"address"},
+				{"name":"Send_only_if_adress_exists","type":"bool"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"}
+	]
+}

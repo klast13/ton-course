@@ -13,7 +13,6 @@ contract queue {
 		tvm.accept();
 	}
 
-	// Modifier that allows to accept some external messages
 	modifier checkOwnerAndAccept {
 		// Check that message was signed with contracts key.
 		require(msg.pubkey() == tvm.pubkey(), 102);
